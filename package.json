@@ -1,7 +1,7 @@
 {
   "name": "react-big-calendar",
   "version": "0.18.0",
-  "description": "Calendar! with events",
+  "description": "customized react-big-calendar for flexibility",
   "author": "Jason Quense <monastic.panic@gmail.com>",
   "repository": "intljusticemission/react-big-calendar",
   "license": "MIT",
