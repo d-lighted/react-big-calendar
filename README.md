@@ -1,6 +1,15 @@
-# react-big-calendar
+# react-big-calendar customization for receptionist
 
-An events calendar component built for React and made for modern browsers (read: IE10+) and uses flexbox over the classic tables-ception approach.
+## you want reflect the commits into the installed module
+
+you need to generate build file when the app uses this module.
+
+```
+  $ npm run build
+```
+
+then reinstall this repo into the app.
+
 
 [**DEMO and Docs**](http://intljusticemission.github.io/react-big-calendar/examples/index.html)
 
