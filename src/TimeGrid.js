@@ -291,7 +291,7 @@ export default class TimeGrid extends Component {
         {
           this.props.allDayHeader &&
           (
-            <React.Fragment>
+            <div>
               {resources && (
                 <div className="rbc-row rbc-row-resource">
                   <div className="rbc-label rbc-header-gutter" style={{ width }} />
@@ -332,7 +332,7 @@ export default class TimeGrid extends Component {
                   longPressThreshold={this.props.longPressThreshold}
                 />
               </div>
-            </React.Fragment>
+            </div>
           )
         }
       </div>
