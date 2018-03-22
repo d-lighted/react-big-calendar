@@ -200,7 +200,7 @@ export default class TimeGrid extends Component {
 
     return (
       <div className="rbc-time-view">
-        {/*{this.renderHeader(range, allDayEvents, width, resources)}*/}
+        {this.renderHeader(range, allDayEvents, width, resources)}
         <div ref="content" className="rbc-time-content">
           <TimeColumn
             {...this.props}
@@ -288,46 +288,53 @@ export default class TimeGrid extends Component {
           <div className="rbc-label rbc-header-gutter" style={{ width }} />
           {this.renderHeaderCells(range)}
         </div>
-        {resources && (
-          <div className="rbc-row rbc-row-resource">
-            <div className="rbc-label rbc-header-gutter" style={{ width }} />
-            {headerRendered}
-          </div>
-        )}
-        <div className="rbc-row">
-          <div
-            ref={ref => (this._gutters[0] = ref)}
-            className="rbc-label rbc-header-gutter"
-            style={{ width }}
-          >
-            {message(messages).allDay}
-          </div>
-          <DateContentRow
-            getNow={getNow}
-            minRows={2}
-            range={range}
-            rtl={this.props.rtl}
-            events={events}
-            className="rbc-allday-cell"
-            selectable={selectable}
-            onSelectSlot={this.handleSelectAllDaySlot}
-            dateCellWrapper={components.dateCellWrapper}
-            dayPropGetter={this.props.dayPropGetter}
-            eventComponent={this.props.components.event}
-            eventWrapperComponent={this.props.components.eventWrapper}
-            titleAccessor={this.props.titleAccessor}
-            tooltipAccessor={this.props.tooltipAccessor}
-            startAccessor={this.props.startAccessor}
-            endAccessor={this.props.endAccessor}
-            allDayAccessor={this.props.allDayAccessor}
-            eventPropGetter={this.props.eventPropGetter}
-            selected={this.props.selected}
-            isAllDay={true}
-            onSelect={this.handleSelectEvent}
-            onDoubleClick={this.handleDoubleClickEvent}
-            longPressThreshold={this.props.longPressThreshold}
-          />
-        </div>
+        {
+          this.props.allDayHeader &&
+          (
+            <React.Fragment>
+              {resources && (
+                <div className="rbc-row rbc-row-resource">
+                  <div className="rbc-label rbc-header-gutter" style={{ width }} />
+                  {headerRendered}
+                </div>
+              )}
+              <div className="rbc-row">
+                <div
+                  ref={ref => (this._gutters[0] = ref)}
+                  className="rbc-label rbc-header-gutter"
+                  style={{ width }}
+                >
+                  {message(messages).allDay}
+                </div>
+                <DateContentRow
+                  getNow={getNow}
+                  minRows={2}
+                  range={range}
+                  rtl={this.props.rtl}
+                  events={events}
+                  className="rbc-allday-cell"
+                  selectable={selectable}
+                  onSelectSlot={this.handleSelectAllDaySlot}
+                  dateCellWrapper={components.dateCellWrapper}
+                  dayPropGetter={this.props.dayPropGetter}
+                  eventComponent={this.props.components.event}
+                  eventWrapperComponent={this.props.components.eventWrapper}
+                  titleAccessor={this.props.titleAccessor}
+                  tooltipAccessor={this.props.tooltipAccessor}
+                  startAccessor={this.props.startAccessor}
+                  endAccessor={this.props.endAccessor}
+                  allDayAccessor={this.props.allDayAccessor}
+                  eventPropGetter={this.props.eventPropGetter}
+                  selected={this.props.selected}
+                  isAllDay={true}
+                  onSelect={this.handleSelectEvent}
+                  onDoubleClick={this.handleDoubleClickEvent}
+                  longPressThreshold={this.props.longPressThreshold}
+                />
+              </div>
+            </React.Fragment>
+          )
+        }
       </div>
     )
   }

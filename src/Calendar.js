@@ -60,6 +60,12 @@ function isValidView(view, { views: _views }) {
 class Calendar extends React.Component {
   static propTypes = {
     /**
+     * show allDayRow in Header
+     *
+     */
+    allDayHeader: PropTypes.bool,
+
+    /**
      * Props passed to main calendar `<div>`.
      *
      */
@@ -667,6 +673,7 @@ class Calendar extends React.Component {
   }
 
   static defaultProps = {
+    allDayHeader: true,
     elementProps: {},
     popup: false,
     toolbar: true,
