@@ -69,6 +69,8 @@ export default class TimeGrid extends Component {
 
     messages: PropTypes.object,
     components: PropTypes.object.isRequired,
+
+    allDayHeader: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -285,56 +287,62 @@ export default class TimeGrid extends Component {
         style={style}
       >
         <div className="rbc-row">
-          <div className="rbc-label rbc-header-gutter" style={{ width }} />
+          {message(messages).header_gutter ? (
+            <div className="rbc-label rbc-header-gutter" style={{ width }}>
+              {message(messages).header_gutter}
+            </div>
+          ) : (
+            <div className="rbc-label rbc-header-gutter" style={{ width }} />
+          )}
           {this.renderHeaderCells(range)}
         </div>
-        {
-          this.props.allDayHeader &&
-          (
-            <div>
-              {resources && (
-                <div className="rbc-row rbc-row-resource">
-                  <div className="rbc-label rbc-header-gutter" style={{ width }} />
-                  {headerRendered}
-                </div>
-              )}
-              <div className="rbc-row">
+        {this.props.allDayHeader && (
+          <div>
+            {resources && (
+              <div className="rbc-row rbc-row-resource">
                 <div
-                  ref={ref => (this._gutters[0] = ref)}
                   className="rbc-label rbc-header-gutter"
                   style={{ width }}
-                >
-                  {message(messages).allDay}
-                </div>
-                <DateContentRow
-                  getNow={getNow}
-                  minRows={2}
-                  range={range}
-                  rtl={this.props.rtl}
-                  events={events}
-                  className="rbc-allday-cell"
-                  selectable={selectable}
-                  onSelectSlot={this.handleSelectAllDaySlot}
-                  dateCellWrapper={components.dateCellWrapper}
-                  dayPropGetter={this.props.dayPropGetter}
-                  eventComponent={this.props.components.event}
-                  eventWrapperComponent={this.props.components.eventWrapper}
-                  titleAccessor={this.props.titleAccessor}
-                  tooltipAccessor={this.props.tooltipAccessor}
-                  startAccessor={this.props.startAccessor}
-                  endAccessor={this.props.endAccessor}
-                  allDayAccessor={this.props.allDayAccessor}
-                  eventPropGetter={this.props.eventPropGetter}
-                  selected={this.props.selected}
-                  isAllDay={true}
-                  onSelect={this.handleSelectEvent}
-                  onDoubleClick={this.handleDoubleClickEvent}
-                  longPressThreshold={this.props.longPressThreshold}
                 />
+                {headerRendered}
               </div>
+            )}
+            <div className="rbc-row">
+              <div
+                ref={ref => (this._gutters[0] = ref)}
+                className="rbc-label rbc-header-gutter"
+                style={{ width }}
+              >
+                {message(messages).allDay}
+              </div>
+              <DateContentRow
+                getNow={getNow}
+                minRows={2}
+                range={range}
+                rtl={this.props.rtl}
+                events={events}
+                className="rbc-allday-cell"
+                selectable={selectable}
+                onSelectSlot={this.handleSelectAllDaySlot}
+                dateCellWrapper={components.dateCellWrapper}
+                dayPropGetter={this.props.dayPropGetter}
+                eventComponent={this.props.components.event}
+                eventWrapperComponent={this.props.components.eventWrapper}
+                titleAccessor={this.props.titleAccessor}
+                tooltipAccessor={this.props.tooltipAccessor}
+                startAccessor={this.props.startAccessor}
+                endAccessor={this.props.endAccessor}
+                allDayAccessor={this.props.allDayAccessor}
+                eventPropGetter={this.props.eventPropGetter}
+                selected={this.props.selected}
+                isAllDay={true}
+                onSelect={this.handleSelectEvent}
+                onDoubleClick={this.handleDoubleClickEvent}
+                longPressThreshold={this.props.longPressThreshold}
+              />
             </div>
-          )
-        }
+          </div>
+        )}
       </div>
     )
   }
